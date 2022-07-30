@@ -1,0 +1,54 @@
+
+<div class="col-md-4 offset-4  shadow-lg bg-primary rounded admin-login">
+    <div class="card-body text-white bg-primary ">
+        <img width="15%" src=".\assets\icons\icons8-admin-settings-male-50.png" class="rounded mx-auto d-block"
+        alt="...">
+        <div class="card-header header-center">
+            <h3 class="h3 text-center">Users Sign Up</h3>
+        </div>
+       <br>
+        <form #usignupForm="ngForm" (ngSubmit)="userSignup()">
+            <div class="form-group">
+                <label for="un"><b>Name</b></label><br>
+                <input type="text" name="username" id="username" class="form-control login-form" placeholder="Name"
+                    #uname="ngModel" [(ngModel)]="normalUser.username" minlength="5" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="un"><b>Email</b></label><br>
+                <input type="email" name="useremail" id="useremail" class="form-control login-form" placeholder="xxxx@gmail.com"
+                    #aemail="ngModel" [(ngModel)]="normalUser.useremail" minlength="5" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="un"><b>Password</b></label><br>
+                <input type="password" name="userpassword" id="userpassword" class="form-control login-form" placeholder="Password"
+                    #apassword="ngModel" [(ngModel)]="normalUser.userpassword" minlength="5" required>
+            </div>
+            <br>
+            <!-- <span class="alert alert-primary" role="alert" *ngIf="aname && aname.touched 
+            && aname.invalid">
+                *Enter an email!!!!.
+            </span> -->
+            <div class="form-group">
+                <div>
+                    <label for="ps"><b>Confirm Password</b></label>
+                    <input type="password" name="cpassword" id="p" class="form-control login-form" placeholder="Confirm Password"
+                        #acpass="ngModel" [(ngModel)]="normalUser.cpassword" minlength="8" required>
+                </div>
+
+                <!-- <span class="alert alert-primary " role="alert" *ngIf="pass && pass.touched 
+                    && pass.invalid">
+                    *Enter a password!!!!.
+                </span> -->
+            </div>
+            <br>
+            <div>
+                
+                <button type="submit" [disabled]="usignupForm.invalid"
+                    class="btn btn-success btn-md btn-block">Create</button>
+                <br><br>
+            </div>
+        </form>
+    </div>
+</div>

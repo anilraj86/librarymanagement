@@ -1,0 +1,103 @@
+<br>
+<div style="width: 100%;">
+    <div style="padding-left: 15%;">
+        <div class="card" style="width:66.5rem;">
+            <div class="card-body">
+                <span id="sp">
+                    <button type="button" class="btn btn-outline-primary" (click)="bookStatus('All')">ALL</button>
+                </span>
+                <span id="sp">
+                    <button type="button" class="btn btn-outline-primary" (click)="bookStatus('New')">NEW BOOKS</button>
+                </span>
+                <span id="sp">
+                    <button type="button" class="btn btn-outline-primary" (click)="bookStatus('Old')">OLD BOOKS</button>
+               </span>
+           </div>
+       </div>
+       <br>
+       <!-- Modal for add book -->
+
+       <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img style="padding-bottom: 3px; width: 40px; font-size: smaller;"
+                    src=".\assets\icons\icons8-add-50 (1).png" alt="">
+        Add New Books
+      </button>
+      <br><br>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Books</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form (ngSubmit)="addBooks();">
+            <div class="modal-body">
+            
+              <label for="title">Book title</label>
+              <input type="text" class="form-control" id="btitle" name="booktitle"
+              placeholder="Enter book title">
+
+              <label for="title">Author Name</label>
+              <input type="text" class="form-control" id="author" name="author"
+              placeholder="Enter author name">
+
+              <label for="title">About Author</label>
+              <input type="text" class="form-control" id="aboutauthor" name="aboutauthor"
+              placeholder="About Author">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- modal end here -->
+     
+      <!-- book details -->
+      <div style="padding-left: 2px; width: 70%;">
+        <div class="card" style="width:66.5rem;">
+            <div>
+                <table class="table">
+                    <thead style="width:66.5rem;" class="thead bg-success text-light">
+                        <tr>
+			    <th scope="col">Image</th>
+                            <th scope="col">TITLE</th>
+                            <th scope="col">AUTHOR</th>
+                            <th scope="col">About Author</th>
+                            <th scope="col">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of books">
+                            <td>{{book.id}}</td>
+                            <td>{{book.btitle}}</td>
+                            <td>{{book.imageurl}}</td>
+                            <td>{{book.bauthor}}</td>
+                            <td>{{book.aboutauthor}}</td>
+                            <td>{{book.bstatus}}</td>
+                            <td>asdsdfsaf</td>
+                            <td>
+                                    <div>
+                                    <button type="button" class="btn btn-outline-danger" data-toggle="tooltip"
+                                        data-placement="top" title="Delete book" (click)="delete(book.id)">
+                                        <img style="width: 20px;padding-bottom: 2px;"
+                                            src=".\assets\icons\icons8-delete-50.png" alt="">
+                                    </button>
+                                </div>
+                            </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+      
+      <!-- book details ends here -->
+
+    </div>
+</div>
