@@ -10,7 +10,7 @@ export class UserloginComponent implements OnInit {
 
   constructor(public router:Router) { }
 
-  public users = [];
+   users = [];
   user:any;
   temp:any;
   password:any;

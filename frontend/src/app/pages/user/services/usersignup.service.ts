@@ -16,7 +16,7 @@ export class UsersignupService {
 
   newUser(item:any)
   {   
-    return this.http.post("http://localhost:3000/insert",{"user":item})
+    return this.http.post("http://localhost:3000/signupuser",{"user":item})
     .subscribe(data =>{console.log(data)})
   }
 

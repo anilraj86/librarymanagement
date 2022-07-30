@@ -6,18 +6,13 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AdminsignupService {
 
-  admin= {
-    adminName:'',
-    adminEmail:'',
-    adminPassword:''
-    }
-
+ 
   constructor(private http:HttpClient) { }
 
   newAdmin(item:any)
   {   
     console.log("Service executed");
-    return this.http.post("http://localhost:3000/insert",{"admin":item})
+    return this.http.post("http://localhost:3000/adminsignup",{"admin":item})
     .subscribe(data =>{console.log(data)})
   }
 

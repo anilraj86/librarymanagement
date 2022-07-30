@@ -13,10 +13,10 @@ export class SignupComponent implements OnInit {
 
   adminUser={
 
-    adminName:'Anilraj',
-    adminEmail:'asdasd',
-    adminPassword:'asdasd',
-    cpassword:'asdasd',
+    adminName:'',
+    adminEmail:'',
+    adminPassword:'',
+    cpassword:'',
     }
 
   ngOnInit(): void {
@@ -25,8 +25,7 @@ export class SignupComponent implements OnInit {
 
   adminSignup(){
     this.adminSignupSrvc.newAdmin(this.adminUser);
-    console.log("Success");
-    //this.route.navigate(['/login']);
+    this.route.navigate(['/login']);
   }
 
 }

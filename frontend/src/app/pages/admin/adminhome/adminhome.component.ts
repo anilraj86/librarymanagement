@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AddbooksService } from '../../books/addbooks.service';
 
 @Component({
   selector: 'app-adminhome',
@@ -10,21 +12,51 @@ export class AdminhomeComponent implements OnInit {
   adminBooksUp:any;
   adminBooks:any;
   bookser:any;
-  books:any;
+  books:any=[];
 
-  constructor() { }
+  constructor(private bookService:AddbooksService,private router:Router) { }
+
+newBooks = {
+    booksId :'',
+    booksTitle:'',
+    authorName:'',
+    aboutAuthor:'',
+    aboutBook:''
+    }
 
   ngOnInit(): void {
+    this.bookService.getBooks()
+    .subscribe(res=>{
+      console.log(res);
+      this.books=JSON.parse(JSON.stringify(res));
+    });
   }
 
   bookStatus(status:any){}
+
   delete(id:any)
   {
+    console.log(id);
+    if(window.confirm('Do you want to delete?'))
+    {
+      this.bookService.deleteBooks(id);
+      alert("Success");
+      this.router.navigate(['/adminhome']);
+    }
+    
+  }
 
+  edit(id:any){
+    
   }
 
   addBooks(){
-    
+    this.bookService.addNewBooks(this.newBooks);
+    console.log("Called");    
+    alert("Success");
+    this.router.navigate(['/adminhome']);
+
   }
+
 
 }

@@ -23,9 +23,7 @@ var NewadminSchema=new Schema({
     adminEmail : String,
     adminPassword : String
 });
-console.info(admindata);
+
 var admindata=mongoose.model('admin',NewadminSchema);
-
-
 
 module.exports=admindata;

@@ -32,19 +32,23 @@
               <h5 class="modal-title" id="exampleModalLabel">Add Books</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form (ngSubmit)="addBooks();">
+            <form #addBooksForm="ngForm" (ngSubmit)="addBooks();">
             <div class="modal-body">
+
+              <label for="title">Book ID</label>
+              <input type="text" class="form-control" [(ngModel)]="newBooks.booksId" id="bookID" name="bookID"
+              placeholder="Enter book ID">
             
               <label for="title">Book title</label>
-              <input type="text" class="form-control" id="btitle" name="booktitle"
+              <input type="text" class="form-control" [(ngModel)]="newBooks.booksTitle" id="btitle" name="booktitle"
               placeholder="Enter book title">
 
               <label for="title">Author Name</label>
-              <input type="text" class="form-control" id="author" name="author"
+              <input type="text" class="form-control" [(ngModel)]="newBooks.authorName" id="author" name="author"
               placeholder="Enter author name">
 
               <label for="title">About Author</label>
-              <input type="text" class="form-control" id="aboutauthor" name="aboutauthor"
+              <input type="text" class="form-control" id="aboutauthor" [(ngModel)]="newBooks.aboutAuthor" name="aboutauthor"
               placeholder="About Author">
 
             </div>
@@ -64,33 +68,73 @@
         <div class="card" style="width:66.5rem;">
             <div>
                 <table class="table">
-                    <thead style="width:66.5rem;" class="thead bg-success text-light">
+                    <thead style="width:68.5rem;" class="thead bg-success text-light">
                         <tr>
-			    <th scope="col">Image</th>
+			                <!-- <th scope="col">Image</th> -->
+                            <th scope="col">Book ID</th>
                             <th scope="col">TITLE</th>
                             <th scope="col">AUTHOR</th>
                             <th scope="col">About Author</th>
-                            <th scope="col">ACTION</th>
+                            <th scope="col">ACTION </th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let book of books">
-                            <td>{{book.id}}</td>
-                            <td>{{book.btitle}}</td>
-                            <td>{{book.imageurl}}</td>
-                            <td>{{book.bauthor}}</td>
-                            <td>{{book.aboutauthor}}</td>
-                            <td>{{book.bstatus}}</td>
-                            <td>asdsdfsaf</td>
+                            <td>{{book._id}}</td>
+                            <td>{{book.booksTitle}}</td>
+                            <td>{{book.authorName}}</td>
+                            <td>{{book.aboutAuthor}}</td>
                             <td>
-                                    <div>
-                                    <button type="button" class="btn btn-outline-danger" data-toggle="tooltip"
-                                        data-placement="top" title="Delete book" (click)="delete(book.id)">
-                                        <img style="width: 20px;padding-bottom: 2px;"
-                                            src=".\assets\icons\icons8-delete-50.png" alt="">
-                                    </button>
-                                </div>
+
+                              <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-primary" title="Edit book" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                          <img style="width: 20px;padding-bottom: 2px;"
+                                                src=".\assets\icons\icons8-edit-50.png" alt="">
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Update Books</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+                                              <form #editBooksForm="ngForm" (ngSubmit)="editBooks();">
+                                              <div class="modal-body">
+                                                <label for="title">Book ID</label>
+                                                <input type="text" class="form-control" [(ngModel)]="newBooks.booksId" id="bookID" name="bookID"
+                                                placeholder="Enter book ID">
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Update Books</button>
+                                              </div>
+                                            </form>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <!-- <div>
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="tooltip"
+                                            data-placement="top" title="Edit book" (click)="edit(book._id)">
+                                            <img style="width: 20px;padding-bottom: 2px;"
+                                                src=".\assets\icons\icons8-edit-50.png" alt="">
+                                        </button>
+                                      </div> -->
                             </td>
+
+                            <td>
+                                      <div>
+                                      <button type="button" class="btn btn-outline-danger" data-toggle="tooltip"
+                                      data-placement="top" title="Delete book" (click)="delete(book._id)">
+                                      <img style="width: 20px;padding-bottom: 2px;"
+                                      src=".\assets\icons\icons8-delete-50.png" alt="">
+                                    </button>
+                                    </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
