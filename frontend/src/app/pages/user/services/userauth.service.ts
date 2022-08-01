@@ -1,27 +1,24 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminauthService {
-
-  private _loginUrl = "http://localhost:3000/login";
-  
+export class UserauthService {
+  private _loginUrl = "http://localhost:3000/userlogin";
   constructor(private http:HttpClient,private router:Router) { }
 
-  adminSubmit(admin:any)
-  {
-    return this.http.post(this._loginUrl, admin).pipe(
+  userlogin(user:any){
+      return this.http.post(this._loginUrl, user).pipe(
       map((response:any)=>{
-        const admin=response;
-        if(admin!==null)
+        const user=response;
+        if(user!==null)
         {
           console.log("Login Success Service");
-          localStorage.setItem('token', admin.token);
-          this.router.navigate(['/adminhome']);
+          localStorage.setItem('token', user.token);
+          this.router.navigate(['/userhome']);
         }
         else
         {
@@ -32,5 +29,4 @@ export class AdminauthService {
       })
     )
   }
-
 }

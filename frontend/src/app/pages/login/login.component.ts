@@ -22,20 +22,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  adminSubmit() {
-    this.auth.adminSubmit(this.user)
-    .subscribe(
-      res=>{
-      localStorage.setItem('token',res.token)
-      this.router.navigate(['/adminhome'])
-    },
-      err=>{
-        console.log(err);
-
-      });
-
+  adminSubmit(form:any) {
+    const myloginObserver={
+      next:(x:any)=>console.log("Scceeded"),
+      error:(err:any)=>console.log(err)
+    };
+    this.auth.adminSubmit(form.value).subscribe(myloginObserver);
   }
-
-    
-
 }

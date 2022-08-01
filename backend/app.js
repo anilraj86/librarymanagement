@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 var bodyparser=require('body-parser');
+const jwt = require('jsonwebtoken')
 var app = new express();
 app.use(cors());
 app.use(bodyparser.json());
@@ -8,6 +9,16 @@ app.use(bodyparser.json());
 var Admindata=require('./src/model/admin');
 var Userdata=require('./src/model/user');
 var addBooks=require('./src/model/books');
+
+app.get('/booklist/:id',  (req, res) => {
+  
+    const id = req.params.id;
+    console.log(id);
+      addBooks.findOne({"_id":id})
+      .then((books)=>{
+          res.send(books);
+      });
+  })
 
 app.post('/signupuser',(req,res)=>{
    
@@ -70,7 +81,7 @@ app.post('/addbooks',(req,res)=>{
     }
 
     var newBook = new addBooks(books);
-   newBook.save((err,data)=>{
+    newBook.save((err,data)=>{
     console.log(data);
     if(err)
     {
@@ -92,6 +103,28 @@ app.get('/booklist',function(req,res){
                 });
 });
 
+app.put('/updatebook',function(req,res){
+
+    console.log(req.body)
+    id=req.body._id,
+    console.log(req.body.booksId);
+    booksId=req.body.booksId,
+    booksTitle  =   req.body.booksTitle,
+    authorName=req.body.authorName,
+    aboutAuthor=req.body.aboutAuthor,
+    aboutBook=req.body.aboutBook
+    addBooks.findByIdAndUpdate({"_id":id},
+                                {$set:{"booksId":booksId,
+                                "booksTitle":booksTitle,
+                                "authorName":authorName,
+                                "aboutAuthor":aboutAuthor
+                                }})
+                .then(function(){
+                    res.send();
+                });
+});
+
+
 app.delete('/removeBooks/:id',(req,res)=>{
    
     id = req.params.id;
@@ -103,7 +136,35 @@ app.delete('/removeBooks/:id',(req,res)=>{
     })
   })
 
-     
+ 
+  app.post('/login', (req, res) => {
+
+    let userData = req.body;
+    logincheck= Admindata.findOne({
+            $and: [{"adminEmail":userData.adminname},
+            {"adminPassword":userData.password}]})
+    .then((adminlogin)=>{
+      console.log(adminlogin);
+        res.send(adminlogin);
+    })
+            
+    });
+
+    app.post('/userlogin', (req, res) => {
+
+      let userData = req.body;
+      console.log(userData);
+      logincheck= Userdata.findOne({
+              $and: [{"userEmail":userData.username},
+              {"userPassword":userData.password}]})
+      .then((userlogin)=>{
+        console.log(userlogin);
+          res.send(userlogin);
+      })
+              
+      })
+
+  
 
 app.listen(3000, function(){
     console.log('listening to port 3000');

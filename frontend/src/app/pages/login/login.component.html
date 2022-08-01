@@ -7,7 +7,7 @@
             <h3 class="h3 text-center">Admin Login</h3>
         </div>
        <br>
-        <form #adminForm="ngForm" (ngSubmit)="adminSubmit()">
+        <form #adminForm="ngForm" (ngSubmit)="adminSubmit(adminForm)">
             <div class="form-group">
                 <label for="un"><b>Email</b></label><br>
                 <input type="email" name="adminname" id="u" class="form-control login-form" placeholder="xxxx@gmail.com"

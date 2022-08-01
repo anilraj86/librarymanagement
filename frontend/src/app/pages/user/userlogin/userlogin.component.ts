@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserauthService } from '../services/userauth.service';
+
 
 @Component({
   selector: 'app-userlogin',
@@ -8,18 +10,20 @@ import { Router } from '@angular/router';
 })
 export class UserloginComponent implements OnInit {
 
-  constructor(public router:Router) { }
+  constructor(public router:Router,private userauth:UserauthService) { }
 
-   users = [];
   user:any;
-  temp:any;
   password:any;
-  username:any;
+  username:any
+
   ngOnInit(): void {
   }
   userSubmit(form:any){
-    this.user = form.value;
-    console.log(this.user.username);
-    console.log(this.user.password);
-  }
+    const myloginObserver={
+      next:(x:any)=>console.log("Scceeded"),
+      error:(err:any)=>console.log(err)
+    };
+    this.userauth.userlogin(form.value).subscribe(myloginObserver);
+    
+   }
 }

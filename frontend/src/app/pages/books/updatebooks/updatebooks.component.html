@@ -1,0 +1,26 @@
+<div class="col-md-4 offset-4  shadow-lg bg-primary rounded admin-login">
+<form #updateBooksForm="ngForm" (ngSubmit)="editBooks();">
+    <div class="modal-body">
+
+      <label for="title">Book ID</label>
+      <input type="text" class="form-control" [(ngModel)]="newBooks.booksId" id="bookID" name="bookID"
+      placeholder="Enter book ID">
+    
+      <label for="title">Book title</label>
+      <input type="text" class="form-control" [(ngModel)]="newBooks.booksTitle" id="btitle" name="booktitle"
+      placeholder="Enter book title">
+
+      <label for="title">Author Name</label>
+      <input type="text" class="form-control" [(ngModel)]="newBooks.authorName" id="author" name="author"
+      placeholder="Enter author name">
+
+      <label for="title">About Author</label>
+      <input type="text" class="form-control" id="aboutauthor" [(ngModel)]="newBooks.aboutAuthor" name="aboutauthor"
+      placeholder="About Author">
+
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>
+  </div>

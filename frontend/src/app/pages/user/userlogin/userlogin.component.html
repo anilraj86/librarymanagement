@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="un"><b>Email</b></label><br>
                 <input type="email" name="username" id="u" class="form-control login-form" placeholder="xxxx@gmail.com"
-                    #aname="ngModel" [(ngModel)]="username" minlength="5" required>
+                    #aname="ngModel" [(ngModel)]="username" minlength="5" required pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}">
             </div>
             <br>
             <span class="alert alert-primary" role="alert" *ngIf="username && username.touched 

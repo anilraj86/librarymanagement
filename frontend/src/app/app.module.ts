@@ -15,6 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { UserloginComponent } from './pages/user/userlogin/userlogin.component';
 import { UsersignupComponent } from './pages/user/signup/usersignup/usersignup.component';
 import { AdminhomeComponent } from './pages/admin/adminhome/adminhome.component';
+import { UpdatebooksComponent } from './pages/books/updatebooks/updatebooks.component';
+import { UserhomeComponent } from './pages/user/userhome/userhome.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AdminhomeComponent } from './pages/admin/adminhome/adminhome.component'
     FooterComponent,
     UserloginComponent,
     UsersignupComponent,
-    AdminhomeComponent
+    AdminhomeComponent,
+    UpdatebooksComponent,
+    UserhomeComponent
   ],
   imports: [
     BrowserModule,

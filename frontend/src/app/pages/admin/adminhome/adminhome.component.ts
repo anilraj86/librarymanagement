@@ -58,5 +58,14 @@ newBooks = {
 
   }
 
+  editBooks(books:any)
+  {
+    console.log("Home page to Update page"+books._id );
+    //this.bookService.getBook(books._id);
+    localStorage.setItem("editbooksId",books._id.toString());
+    this.router.navigate(['/updatebooks']);
+    
+  }
+
 
 }

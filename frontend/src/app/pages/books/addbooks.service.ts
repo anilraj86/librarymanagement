@@ -19,13 +19,28 @@ export class AddbooksService {
     return this.http.get("http://localhost:3000/booklist");
    
   }
-
+  getBook(book:any){
+    console.log('client update')
+    return this.http.put("http://localhost:3000/updatebook",book)
+    .subscribe(data =>{console.log(data)});
+  }
+  getBookValue(id:any){
+    console.log("Local storage Value");
+    return this.http.get("http://localhost:3000/booklist/"+ id);
+  }
   deleteBooks(id:any){
     console.log("Delete Service Visited");
      return this.http.delete("http://localhost:3000/removeBooks/"+id)
     .subscribe(data=>{console.log(data)
     });    
   }
+
+  // editBooks(booksid:any)
+  // {
+  //   console.log('client update')
+  //   return this.http.put("http://localhost:3000/updateBooks",booksid)
+  //   .subscribe(data =>{console.log(data)})
+  // }
   
 
 }

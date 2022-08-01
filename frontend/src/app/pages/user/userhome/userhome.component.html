@@ -1,0 +1,54 @@
+
+<br>
+<div style="width: 100%;">
+    <div style="padding-left: 15%;">
+        <div class="card" style="width:66.5rem;">
+            <div class="card-body">
+                <span id="sp">
+                    <button type="button" class="btn btn-outline-primary">ALL</button>
+                </span>
+                <span id="sp">
+                    <button type="button" class="btn btn-outline-primary" >NEW BOOKS</button>
+                </span>
+                <span id="sp">
+                    <button type="button" class="btn btn-outline-primary" >OLD BOOKS</button>
+               </span>
+           </div>
+       </div>
+       <br>
+          
+      <!-- book details -->
+      <div style="padding-left: 2px; width: 70%;">
+        <div class="card" style="width:66.5rem;">
+            <div>
+                <table class="table">
+                    <thead style="width:68.5rem;" class="thead bg-success text-light">
+                        <tr>
+			                <!-- <th scope="col">Image</th> -->
+                            <th scope="col">Book ID</th>
+                            <th scope="col">TITLE</th>
+                            <th scope="col">AUTHOR</th>
+                            <th scope="col">About Author</th>
+                            <th scope="col">ACTION </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of books">
+                            <!-- <td>{{book._id}}</td> -->
+                            <td>{{book.booksId}}</td>
+                            <td>{{book.booksTitle}}</td>
+                            <td>{{book.authorName}}</td>
+                            <td>{{book.aboutAuthor}}</td>
+                                                      
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+      
+      <!-- book details ends here -->
+
+    </div>
+</div>
